@@ -1,0 +1,36 @@
+{
+    "sourceFiles":"output/",
+    "configs":[
+        {
+            "key":"terraform",
+            "type":"json",
+            "jsonPath":"xl-igw-terraform.json"
+        },
+        {
+            "key":"db",
+            "type":"inline"
+        },
+        {
+            "key":"pvc",
+            "type":"inline"
+        }
+    ],
+
+	"terraform": [{
+		"BASTION_PUBLIC_IP": ".bastion_public_ip.value[][]",
+		"DATABASE_ENDPOINT": ".database_endpoint.value",
+		"DATABASE_USERNAME": ".database_password.value",
+		"GKE_MASTER_IP": ".gke_master_ip.value",
+		"EXTERNAL_LB_IP": ".external_lb_ip.value",
+		"NAT_IP": ".nat_ip.value"
+    }],
+
+    "db":[{
+        "DATABASE_PW":"admin"
+    }],
+
+    "pvc":[{
+        "MOUNT_PATH":"/mnt/pilot-storage/test/",
+        "CLAIM_NAME":"ciarnd-pilot-pvc"
+    }]
+}
